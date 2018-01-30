@@ -86,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/pot_weight_g2"
-                android:inputType="text" />
+                android:digits="0123456789"
+                android:inputType="number" />
         </TableRow>
 
     </TableLayout>

@@ -33,13 +33,26 @@ public class PotAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "Okay Button Pressed");
-                String nameOfPot = namePot.getText().toString();
-                int weightPotInG = Integer.parseInt(weightPot.getText().toString());
-                Intent potInfo = new Intent();
-                potInfo.putExtra(POT_NAME, nameOfPot);
-                potInfo.putExtra(WEIGHT_G, weightPotInG);
-                setResult(RESULTCODE_ADDPOT, potInfo);
-                finish();
+                try {
+                    if (namePot.getText().toString().length() < 1) {
+                        Toast.makeText(getApplicationContext(), "Pot name must at least have 1 character", Toast.LENGTH_SHORT)
+                                .show();
+                    } else {
+                        String nameOfPot = namePot.getText().toString();
+                        int weightPotInG = Integer.parseInt(weightPot.getText().toString());
+                        Intent potInfo = new Intent();
+                        potInfo.putExtra(POT_NAME, nameOfPot);
+                        potInfo.putExtra(WEIGHT_G, weightPotInG);
+                        setResult(RESULTCODE_ADDPOT, potInfo);
+                        finish();
+                    }
+                }
+                catch(NumberFormatException nfe)
+                {
+                    Toast.makeText(getApplicationContext(), "Weight Of Pot must be greater than or equal to 0", Toast.LENGTH_SHORT)
+                            .show();
+                }
+
             }
         });
 

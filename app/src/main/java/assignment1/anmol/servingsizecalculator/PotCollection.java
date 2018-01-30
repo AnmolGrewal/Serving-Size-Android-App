@@ -23,9 +23,16 @@ public class PotCollection {
     private int countPots() {
         return pots.size();
     }
-    private Pot getPot(int index) {
+
+    Pot getPot(int index) {
         validateIndexWithException(index);
         return pots.get(index);
+    }
+
+    void deletePot(int index)
+    {
+        validateIndexWithException(index);
+        pots.remove(index);
     }
 
     // Useful for integrating with an ArrayAdapter

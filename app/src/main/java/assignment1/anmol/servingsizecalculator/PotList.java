@@ -1,6 +1,7 @@
 package assignment1.anmol.servingsizecalculator;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,9 +18,11 @@ import static assignment1.anmol.servingsizecalculator.PotAdd.POT_NAME;
 import static assignment1.anmol.servingsizecalculator.PotAdd.WEIGHT_G;
 
 //https://www.youtube.com/watch?v=eAPFgC9URqc Reference Brian Fraser Adapter Video
+//https://www.youtube.com/watch?v=SaXYFHYGLj4 Reference Brian Fraser Passing Values Intents etc...
 public class PotList extends AppCompatActivity {
 
     public static final int RESULTCODE_ADDPOT = 40;
+    public static final String POT_POSITION = "POT_POSITION";
     PotCollection mainList = new PotCollection();
     private static final String TAG = "UserClicks";
     @Override
@@ -53,10 +56,14 @@ public class PotList extends AppCompatActivity {
         switch(requestCode) {
             case RESULTCODE_ADDPOT:
                 String potName = data.getStringExtra("Pot Name");
-                Toast.makeText(getApplicationContext(), potName, Toast.LENGTH_SHORT)
-                        .show();
                 mainList.addPot(getPotFromIntent(data));
                 populateListView();
+                break;
+            case 69:
+                int position = data.getIntExtra(POT_POSITION, 0);
+                mainList.deletePot(position);
+                populateListView();
+                break;
         }
     }
 
@@ -72,10 +79,19 @@ public class PotList extends AppCompatActivity {
         listPot.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-                TextView textView = (TextView) viewClicked;
-                String message = textView.getText().toString();
+                Intent calculateServingStuff = makeLaunchIntent(PotList.this, mainList.getPot(position), position);
+                startActivityForResult(calculateServingStuff, 69);
             }
         });
+    }
+
+    public static Intent makeLaunchIntent(Context context, Pot pot, int position)
+    {
+        Intent tempIntent = new Intent(context, Servings.class);
+        tempIntent.putExtra(POT_NAME, pot.getName());
+        tempIntent.putExtra(WEIGHT_G, pot.getWeightInG());
+        tempIntent.putExtra(POT_POSITION, position);
+        return tempIntent;
     }
 
     private void populateListView() {

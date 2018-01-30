@@ -1,6 +1,7 @@
 package assignment1.anmol.servingsizecalculator;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import org.w3c.dom.Text;
 
 import static assignment1.anmol.servingsizecalculator.PotAdd.POT_NAME;
 import static assignment1.anmol.servingsizecalculator.PotAdd.WEIGHT_G;
+import static assignment1.anmol.servingsizecalculator.PotList.POT_POSITION;
+
 public class Servings extends AppCompatActivity {
 
     private static final String TAG = "UserClicks";
@@ -26,7 +29,9 @@ public class Servings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servings);
 
-        Intent intent = getIntent();
+        final Intent potInfo = new Intent();
+
+        final Intent intent = getIntent();
         String namePot = intent.getStringExtra(POT_NAME);
         final int potWeight = intent.getIntExtra(WEIGHT_G, 0);
 
@@ -42,6 +47,20 @@ public class Servings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "Add Pot Button Pressed");
+                setResult(Activity.RESULT_CANCELED, potInfo);
+                finish();
+            }
+        });
+
+        //Delete Button
+        Button deleteButton = findViewById(R.id.deletePot);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "Deleting Pot");
+                int position = intent.getIntExtra(POT_POSITION, 0);
+                potInfo.putExtra(POT_POSITION, position);
+                setResult(69, potInfo);
                 finish();
             }
         });

@@ -12,4 +12,14 @@
     <string name="pot_weight_g3">Pot weight (g):</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
+    <string name="pot">Pot</string>
+    <string name="textview">TextView</string>
+    <string name="weight_empty_g">Weight empty (g)</string>
+    <string name="weight_with_food_g">Weight with food (g)</string>
+    <string name="weight_of_food_g">Weight of food (g)</string>
+    <string name="servings">#Servings</string>
+    <string name="serving_weight">Serving Weight</string>
+    <string name="back">BACK</string>
+    <string name="delete_pot">DELETE POT</string>
+    <string name="added_error_checking_delete_pot">Added Error Checking, Delete Pot</string>
 </resources>
