@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import static assignment1.anmol.servingsizecalculator.PotAdd.POT_NAME;
 import static assignment1.anmol.servingsizecalculator.PotAdd.WEIGHT_G;
-
+//Tag
 //https://www.youtube.com/watch?v=eAPFgC9URqc Reference Brian Fraser Adapter Video
 //https://www.youtube.com/watch?v=SaXYFHYGLj4 Reference Brian Fraser Passing Values Intents etc...
 public class PotList extends AppCompatActivity {
