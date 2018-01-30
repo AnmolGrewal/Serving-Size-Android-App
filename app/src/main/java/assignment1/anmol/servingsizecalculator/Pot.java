@@ -32,6 +32,7 @@ public class Pot {
     // Return the name.
     public String getName() {
         return namePot;
+        //Push changes
     }
 
     // Set the name. Throws IllegalArgumentException if name is an empty string (length 0),
