@@ -5,18 +5,18 @@ package assignment1.anmol.servingsizecalculator;
  */
 
 public class Pot {
-
+//Unit Tests in Tests
     private String namePot;
     private int weightInGPot;
 
     // Set member data based on parameters.
-    Pot(String name, int weightInG) {
+    public Pot(String name, int weightInG) {
         namePot = name;
         weightInGPot = weightInG;
     }
 
     // Return the weight
-    int getWeightInG() {
+    public int getWeightInG() {
         return weightInGPot;
     }
 
@@ -37,7 +37,10 @@ public class Pot {
     // Set the name. Throws IllegalArgumentException if name is an empty string (length 0),
     // or if name is a null-reference.
     public void setName(String name) {
-        //No point in using name == null since null is always 'false'
+        if(name == null)
+        {
+            throw new IllegalArgumentException();
+        }
         if (name.equals("")  || name.length() == 0) {
             throw new IllegalArgumentException();
         } else {
