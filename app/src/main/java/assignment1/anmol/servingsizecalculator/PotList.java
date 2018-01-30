@@ -1,5 +1,6 @@
 package assignment1.anmol.servingsizecalculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,8 +27,10 @@ public class PotList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "Add Pot Button Pressed");
-                Toast.makeText(getApplicationContext(), "Starboard (right) is green", Toast.LENGTH_SHORT)
+                Toast.makeText(getApplicationContext(), "Swapping to Add Pot", Toast.LENGTH_SHORT)
                         .show();
+                Intent swapAddPot = new Intent(PotList.this, PotAdd.class);
+                startActivity(swapAddPot);
             }
         });
 

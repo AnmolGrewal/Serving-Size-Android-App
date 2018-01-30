@@ -2,4 +2,14 @@
     <string name="app_name">Serving Size Calculator</string>
     <string name="select_a_pot_to_use">Select a pot to use:</string>
     <string name="add_pot">ADD POT</string>
+    <string name="pot_name">Pot Name</string>
+    <string name="pot_weight_g">Pot weight(g)</string>
+    <string name="pot_name1">Pot Name:</string>
+    <string name="pot_weight_g1">Pot weight(g):</string>
+    <string name="pot_name2">Pot Name:</string>
+    <string name="pot_name3">Pot Name</string>
+    <string name="pot_weight_g2">Pot Weight (g)</string>
+    <string name="pot_weight_g3">Pot weight (g):</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 </resources>
